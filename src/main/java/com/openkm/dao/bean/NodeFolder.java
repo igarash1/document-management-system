@@ -40,7 +40,7 @@ public class NodeFolder extends NodeBase {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "NFL_DESCRIPTION", length = 2048)
-	@Field(index = Index.TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.TOKENIZED, store = Store.YES)
 	private String description;
 
 	public String getDescription() {

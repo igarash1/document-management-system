@@ -68,7 +68,7 @@ public class Omr implements Serializable {
 	@ElementCollection
 	@Column(name = "OMP_PROPERTY")
 	@CollectionTable(name = "OKM_OMR_PROPERTY", joinColumns = { @JoinColumn(name = "OMP_OMR") })
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	@FieldBridge(impl = SetFieldBridge.class)
 	protected Set<String> properties = new HashSet<>();
 

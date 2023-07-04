@@ -29,9 +29,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.security.auth.Subject;
 import java.security.Principal;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * @author pavila
@@ -48,56 +45,8 @@ public class PrincipalUtils {
 	/**
 	 * Obtain the logged user.
 	 */
-	public static String getUser() throws NamingException {
-		Subject subject = PrincipalUtils.getSubject();
-		String user = null;
-
-		for (Principal obj : subject.getPrincipals()) {
-			if (!(obj instanceof java.security.acl.Group)) {
-				java.security.Principal principal = obj;
-				user = principal.getName();
-			}
-		}
-
-		return user;
-	}
-
-	/**
-	 * Obtain the list of user roles.
-	 */
-	public static Set<String> getRoles() throws NamingException {
-		Subject subject = PrincipalUtils.getSubject();
-		Set<String> roles = new HashSet<>();
-
-		for (Object obj : subject.getPrincipals()) {
-			if (obj instanceof java.security.acl.Group) {
-				java.security.acl.Group group = (java.security.acl.Group) obj;
-
-				for (Enumeration<? extends java.security.Principal> groups = group.members(); groups.hasMoreElements(); ) {
-					java.security.Principal rol = groups.nextElement();
-					roles.add(rol.getName());
-				}
-			}
-		}
-
-		return roles;
-	}
-
-	/**
-	 * Check for role
-	 */
-	public static boolean hasRole(String role) {
-		try {
-			Set<String> roles = getRoles();
-
-			if (roles != null) {
-				return roles.contains(role);
-			}
-		} catch (NamingException e) {
-			// Ignore
-		}
-
-		return false;
+	public static Principal getUser() throws NamingException {
+		return PrincipalUtils.getSubject().getPrincipals().stream().findFirst().get();
 	}
 
 	/**

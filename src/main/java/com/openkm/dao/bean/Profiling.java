@@ -33,9 +33,9 @@ import java.util.Calendar;
 @org.hibernate.annotations.Table(appliesTo = "OKM_PROFILING",
 		indexes = {
 				// CREATE INDEX IDX_PROFILING_DATCLS ON OKM_PROFILING(PRL_DATE, PRL_CLAZZ);
-				@Index(name = "IDX_PROFILING_DATCLS", columnNames = {"PRL_DATE", "PRL_CLAZZ"}),
+				 @Index(name = "IDX_PROFILING_DATCLS", columnNames = {"PRL_DATE", "PRL_CLAZZ"}),
 				// CREATE INDEX IDX_PROFILING_USRCLS ON OKM_PROFILING(PRL_USER, PRL_CLAZZ);
-				@Index(name = "IDX_PROFILING_USRCLS", columnNames = {"PRL_USER", "PRL_CLAZZ"})
+				 @Index(name = "IDX_PROFILING_USRCLS", columnNames = {"PRL_USER", "PRL_CLAZZ"})
 		}
 )
 public class Profiling implements Serializable {
@@ -49,7 +49,7 @@ public class Profiling implements Serializable {
 
 	@Column(name = "PRL_DATE")
 	// CREATE INDEX IDX_PROFILING_DATE ON OKM_PROFILING(PRL_DATE);
-	@Index(name = "IDX_PROFILING_DATE")
+	 @Index(name = "IDX_PROFILING_DATE")
 	private Calendar date;
 
 	@Column(name = "PRL_USER", length = 64)

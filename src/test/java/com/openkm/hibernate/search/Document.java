@@ -40,13 +40,13 @@ public class Document implements Serializable {
 	protected String uuid;
 
 	@Column(name="NDC_NAME", length=256)
-	@Field(index=Index.UN_TOKENIZED, store=Store.YES)
+	@Field(index= org.hibernate.search.annotations.Index.UN_TOKENIZED, store=Store.YES)
 	protected String name;
 
 	@ElementCollection
 	@Column(name="NDK_KEYWORD")
 	@CollectionTable(name="OKM_DOCUMENT_KEYWORD", joinColumns = { @JoinColumn( name = "NDK_DOCUMENT" ) })
-	@Field(index=Index.UN_TOKENIZED, store=Store.YES)
+	@Field(index= org.hibernate.search.annotations.Index.UN_TOKENIZED, store=Store.YES)
 	@FieldBridge(impl=SetFieldBridge.class)
 	protected Set<String> keywords = new HashSet<>();
 

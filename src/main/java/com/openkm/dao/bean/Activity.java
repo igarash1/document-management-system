@@ -33,9 +33,9 @@ import java.util.Calendar;
 @org.hibernate.annotations.Table(appliesTo = "OKM_ACTIVITY",
 		indexes = {
 				// CREATE INDEX IDX_ACTIVITY_DATACT ON OKM_ACTIVITY(ACT_DATE, ACT_ACTION);
-				@Index(name = "IDX_ACTIVITY_DATACT", columnNames = {"ACT_DATE", "ACT_ACTION"}),
+				 @Index(name = "IDX_ACTIVITY_DATACT", columnNames = {"ACT_DATE", "ACT_ACTION"}),
 				// CREATE INDEX IDX_ACTIVITY_USRACT ON OKM_ACTIVITY(ACT_USER, ACT_ACTION);
-				@Index(name = "IDX_ACTIVITY_USRACT", columnNames = {"ACT_USER", "ACT_ACTION"})
+				 @Index(name = "IDX_ACTIVITY_USRACT", columnNames = {"ACT_USER", "ACT_ACTION"})
 		}
 )
 public class Activity implements Serializable {
@@ -49,7 +49,7 @@ public class Activity implements Serializable {
 
 	@Column(name = "ACT_DATE")
 	// CREATE INDEX IDX_ACTIVITY_DATE ON OKM_ACTIVITY(ACT_DATE);
-	@Index(name = "IDX_ACTIVITY_DATE")
+	 @Index(name = "IDX_ACTIVITY_DATE")
 	private Calendar date;
 
 	@Column(name = "ACT_USER", length = 64)

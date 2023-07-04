@@ -51,30 +51,30 @@ public class NodeBase implements Serializable {
 	protected String uuid;
 
 	@Column(name = "NBS_PARENT", length = 64)
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	// CREATE INDEX IDX_NODE_BASE_PARENT ON OKM_NODE_BASE(NBS_PARENT);
 	@org.hibernate.annotations.Index(name = "IDX_NODE_BASE_PARENT")
 	protected String parent;
 
 	@Column(name = "NBS_CONTEXT")
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	protected String context;
 
 	@Column(name = "NBS_PATH", length = 1024)
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	protected String path;
 
 	@Column(name = "NBS_AUTHOR", length = 64)
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	protected String author;
 
 	@Column(name = "NBS_CREATED")
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	@CalendarBridge(resolution = Resolution.DAY)
 	protected Calendar created;
 
 	@Column(name = "NBS_NAME", length = MAX_NAME)
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	@FieldBridge(impl = LowerCaseFieldBridge.class)
 	protected String name;
 
@@ -88,21 +88,21 @@ public class NodeBase implements Serializable {
 	@ElementCollection
 	@Column(name = "NSB_SUBSCRIPTOR")
 	@CollectionTable(name = "OKM_NODE_SUBSCRIPTOR", joinColumns = {@JoinColumn(name = "NSB_NODE")})
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	@FieldBridge(impl = SetFieldBridge.class)
 	protected Set<String> subscriptors = new HashSet<>();
 
 	@ElementCollection
 	@Column(name = "NKW_KEYWORD")
 	@CollectionTable(name = "OKM_NODE_KEYWORD", joinColumns = {@JoinColumn(name = "NKW_NODE")})
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	@FieldBridge(impl = SetFieldBridge.class)
 	protected Set<String> keywords = new HashSet<>();
 
 	@ElementCollection
 	@Column(name = "NCT_CATEGORY")
 	@CollectionTable(name = "OKM_NODE_CATEGORY", joinColumns = {@JoinColumn(name = "NCT_NODE")})
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	@FieldBridge(impl = SetFieldBridge.class)
 	protected Set<String> categories = new HashSet<>();
 
@@ -110,7 +110,7 @@ public class NodeBase implements Serializable {
 	@Column(name = "NUP_PERMISSION")
 	@MapKeyColumn(name = "NUP_USER", length = 64)
 	@CollectionTable(name = "OKM_NODE_USER_PERMISSION", joinColumns = {@JoinColumn(name = "NUP_NODE")})
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	@FieldBridge(impl = MapFieldBridge.class)
 	protected Map<String, Integer> userPermissions = new HashMap<>();
 
@@ -118,12 +118,12 @@ public class NodeBase implements Serializable {
 	@Column(name = "NRP_PERMISSION")
 	@MapKeyColumn(name = "NRP_ROLE", length = 64)
 	@CollectionTable(name = "OKM_NODE_ROLE_PERMISSION", joinColumns = {@JoinColumn(name = "NRP_NODE")})
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	@FieldBridge(impl = MapFieldBridge.class)
 	protected Map<String, Integer> rolePermissions = new HashMap<>();
 
 	@OneToMany(mappedBy = "node", targetEntity = NodeProperty.class, cascade = CascadeType.ALL)
-	@Field(index = Index.TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.TOKENIZED, store = Store.YES)
 	@FieldBridge(impl = SetPropertiesFieldBridge.class)
 	protected Set<NodeProperty> properties = new HashSet<>();
 

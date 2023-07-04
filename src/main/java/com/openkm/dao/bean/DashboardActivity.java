@@ -32,9 +32,9 @@ import java.util.Calendar;
 @org.hibernate.annotations.Table(appliesTo = "OKM_DASHBOARD_ACTIVITY",
 		indexes = {
 				// CREATE INDEX IDX_DASH_ACTI_DATACT ON OKM_DASHBOARD_ACTIVITY(DAC_DATE, DAC_ACTION);
-				@Index(name = "IDX_DASH_ACTI_DATACT", columnNames = {"DAC_DATE", "DAC_ACTION"}),
+				 @Index(name = "IDX_DASH_ACTI_DATACT", columnNames = {"DAC_DATE", "DAC_ACTION"}),
 				// CREATE INDEX IDX_DASH_ACTI_USRACT ON OKM_DASHBOARD_ACTIVITY(DAC_USER, DAC_ACTION);
-				@Index(name = "IDX_DASH_ACTI_USRACT", columnNames = {"DAC_USER", "DAC_ACTION"})
+				 @Index(name = "IDX_DASH_ACTI_USRACT", columnNames = {"DAC_USER", "DAC_ACTION"})
 		}
 )
 public class DashboardActivity implements Serializable {
@@ -48,7 +48,7 @@ public class DashboardActivity implements Serializable {
 
 	@Column(name = "DAC_DATE")
 	// CREATE INDEX IDX_DASH_ACTI_DATE ON OKM_DASHBOARD_ACTIVITY(DAC_DATE);
-	@Index(name = "IDX_DASH_ACTI_DATE")
+	 @Index(name = "IDX_DASH_ACTI_DATE")
 	private Calendar date;
 
 	@Column(name = "DAC_USER", length = 64)

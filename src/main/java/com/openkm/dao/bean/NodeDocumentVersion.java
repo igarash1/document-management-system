@@ -50,48 +50,48 @@ public class NodeDocumentVersion implements Serializable {
 	private String uuid;
 
 	@Column(name = "NDV_PARENT", length = 64)
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	// CREATE INDEX IDX_NDOC_VERSION_PARENT ON OKM_NODE_DOCUMENT_VERSION(NDV_PARENT);
 	@org.hibernate.annotations.Index(name = "IDX_NOD_DOC_VER_PARENT")
 	private String parent;
 
 	// The UUID of the previous version
 	@Column(name = "NDV_PREVIOUS", length = 64)
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	private String previous;
 
 	@Column(name = "NDV_SIZE")
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	private long size;
 
 	@Column(name = "NDV_AUTHOR", length = 64)
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	private String author;
 
 	@Column(name = "NDV_CREATED")
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	@CalendarBridge(resolution = Resolution.DAY)
 	private Calendar created;
 
 	@Column(name = "NDV_NAME", length = 64)
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	private String name;
 
 	@Column(name = "NDV_CURRENT", nullable = false)
 	@Type(type = "true_false")
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	private boolean current;
 
 	@Column(name = "NDV_COMMENT", length = 2048)
-	@Field(index = Index.TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.TOKENIZED, store = Store.YES)
 	private String comment;
 
 	@Column(name = "NDV_MIME_TYPE", length = 128)
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	private String mimeType;
 
 	@Column(name = "NDV_CHECKSUM", length = 32)
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	private String checksum;
 
 	// http://stackoverflow.com/questions/3677380/proper-hibernate-annotation-for-byte
@@ -100,7 +100,7 @@ public class NodeDocumentVersion implements Serializable {
 	private byte[] content;
 
 	@Transient
-	@Field(index = Index.TOKENIZED, store = Store.NO)
+	@Field(index = org.hibernate.search.annotations.Index.TOKENIZED, store = Store.NO)
 	private String text;
 
 	public String getUuid() {

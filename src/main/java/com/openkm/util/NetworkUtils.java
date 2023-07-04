@@ -22,6 +22,7 @@
 package com.openkm.util;
 
 import org.xbill.DNS.*;
+import org.xbill.DNS.Record;
 
 import java.io.IOException;
 import java.net.InetAddress;

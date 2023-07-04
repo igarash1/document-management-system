@@ -77,10 +77,10 @@
     <opencmis.version>0.12.0</opencmis.version>
 
     <!-- Tell the compiler we can use 1.8 -->
-    <java.version>1.8</java.version>
-    <java.compiler>1.8</java.compiler>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <java.version>17</java.version>
+    <java.compiler>17</java.compiler>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
 
     <!-- Default source encoding ${default.encoding} -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -154,6 +154,12 @@
       <version>1.6.2</version>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>com.sun.xml.ws</groupId>
+      <artifactId>jaxws-ri</artifactId>
+      <version>2.3.3</version>
+      <type>pom</type>
+    </dependency>
 
     <!-- Logback -->
     <dependency>
@@ -219,6 +225,11 @@
       <groupId>net.sourceforge.nekohtml</groupId>
       <artifactId>nekohtml</artifactId>
       <version>1.9.14</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.spec.javax.rmi</groupId>
+      <artifactId>jboss-rmi-api_1.0_spec</artifactId>
+      <version>1.0.6.Final</version>
     </dependency>
 
     <!-- Base64 encoding / decoding -->

@@ -38,35 +38,35 @@ public class NodeDocument extends NodeBase {
 	public static final String TEXT_FIELD = "text";
 
 	@Column(name = "NDC_LAST_MODIFIED")
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	@CalendarBridge(resolution = Resolution.DAY)
 	private Calendar lastModified;
 
 	@Column(name = "NDC_LANGUAGE", length = 8)
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	private String language;
 
 	@Column(name = "NDC_TITLE", length = 256)
-	@Field(index = Index.TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.TOKENIZED, store = Store.YES)
 	private String title;
 
 	@Column(name = "NDC_DESCRIPTION", length = 2048)
-	@Field(index = Index.TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.TOKENIZED, store = Store.YES)
 	private String description;
 
 	@Column(name = "NDC_MIME_TYPE", length = 128)
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	private String mimeType;
 
 	@Column(name = "NDC_TEXT")
 	@Lob
 	@Type(type = "org.hibernate.type.StringClobType")
-	@Field(index = Index.TOKENIZED, store = Store.NO)
+	@Field(index = org.hibernate.search.annotations.Index.TOKENIZED, store = Store.NO)
 	private String text;
 
 	@Column(name = "NDC_CHECKED_OUT", nullable = false)
 	@Type(type = "true_false")
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	private boolean checkedOut;
 
 	@Column(name = "NDC_ENCRYPTION", nullable = false)
@@ -82,12 +82,12 @@ public class NodeDocument extends NodeBase {
 
 	@Column(name = "NDC_TEXT_EXTRACTED", nullable = false)
 	@Type(type = "true_false")
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	private boolean textExtracted;
 
 	@Column(name = "NDC_LOCKED", nullable = false)
 	@Type(type = "true_false")
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	private boolean locked;
 
 	@Embedded

@@ -45,64 +45,64 @@ public class NodeMail extends NodeBase {
 	private long size;
 
 	@Column(name = "NML_FROM", length = 256)
-	@Field(index = Index.TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.TOKENIZED, store = Store.YES)
 	private String from;
 
 	@ElementCollection
 	@Column(name = "NML_REPLY")
 	@CollectionTable(name = "OKM_NODE_MAIL_REPLY", joinColumns = {@JoinColumn(name = "NMT_NODE")})
-	@Field(index = Index.TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.TOKENIZED, store = Store.YES)
 	@FieldBridge(impl = SetFieldBridge.class)
 	private Set<String> reply = new HashSet<>();
 
 	@ElementCollection
 	@Column(name = "NML_TO")
 	@CollectionTable(name = "OKM_NODE_MAIL_TO", joinColumns = {@JoinColumn(name = "NMT_NODE")})
-	@Field(index = Index.TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.TOKENIZED, store = Store.YES)
 	@FieldBridge(impl = SetFieldBridge.class)
 	private Set<String> to = new HashSet<>();
 
 	@ElementCollection
 	@Column(name = "NML_CC")
 	@CollectionTable(name = "OKM_NODE_MAIL_CC", joinColumns = {@JoinColumn(name = "NMC_NODE")})
-	@Field(index = Index.TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.TOKENIZED, store = Store.YES)
 	@FieldBridge(impl = SetFieldBridge.class)
 	private Set<String> cc = new HashSet<>();
 
 	@ElementCollection
 	@Column(name = "NML_BCC")
 	@CollectionTable(name = "OKM_NODE_MAIL_BCC", joinColumns = {@JoinColumn(name = "NMB_NODE")})
-	@Field(index = Index.TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.TOKENIZED, store = Store.YES)
 	@FieldBridge(impl = SetFieldBridge.class)
 	private Set<String> bcc = new HashSet<>();
 
 	@Column(name = "NML_SENT_DATE")
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	@CalendarBridge(resolution = Resolution.DAY)
 	private Calendar sentDate;
 
 	@Column(name = "NML_RECEIVED_DATE")
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	@CalendarBridge(resolution = Resolution.DAY)
 	private Calendar receivedDate;
 
 	@Column(name = "NML_SUBJECT", length = MAX_SUBJECT)
-	@Field(index = Index.TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.TOKENIZED, store = Store.YES)
 	private String subject;
 
 	@Column(name = "NML_CONTENT")
 	@Lob
 	@Type(type = "org.hibernate.type.StringClobType")
-	@Field(index = Index.TOKENIZED, store = Store.NO)
+	@Field(index = org.hibernate.search.annotations.Index.TOKENIZED, store = Store.NO)
 	private String content;
 
 	@Column(name = "NML_MIME_TYPE", length = 64)
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	private String mimeType;
 
 	@Column(name = "NML_ATTACHMENT")
 	@Type(type = "true_false")
-	@Field(index = Index.UN_TOKENIZED, store = Store.YES)
+	@Field(index = org.hibernate.search.annotations.Index.UN_TOKENIZED, store = Store.YES)
 	private Boolean hasAttachments = Boolean.FALSE;
 
 	public long getSize() {
